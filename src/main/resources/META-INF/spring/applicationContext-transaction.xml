@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:META-INF/spring/connection.properties" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="hibernate4TransactionManager" />
+
+	<bean id="hibernate4TransactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="hibernate4LocalSessionFactory" />
+	</bean>
+
+	<bean id="hibernate4LocalSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="lazyConnectionBoneCpDataSource" />
+		<property name="annotatedClasses">
+			<set>
+				<value>org.nnc.moviediary.domain.entities.BaseEntity</value>
+				<value>org.nnc.moviediary.domain.entities.Genre</value>
+				<value>org.nnc.moviediary.domain.entities.Movie</value>
+				<value>org.nnc.moviediary.domain.entities.Celebrity</value>
+				<value>org.nnc.moviediary.domain.entities.User</value>
+				<value>org.nnc.moviediary.domain.entities.Watcher</value>
+				<value>org.nnc.moviediary.domain.entities.WatchList</value>
+			</set>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+
+				<prop key="connection.useUnicode">${hibernate.connection.useUnicode}</prop>
+				<prop key="connection.characterEncoding">${hibernate.connection.characterEncoding}</prop>
+
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+
+				<prop key="hibernate.generate_statistics">${hibernate.generate_statistics}</prop>
+				<prop key="hibernate.id.new_generator_mappings">${hibernate.id.new_generator_mappings}</prop>
+				<prop key="hibernate.max_fetch_depth">${hibernate.max_fetch_depth}</prop>
+				<prop key="hibernate.default_batch_fetch_size">${hibernate.default_batch_fetch_size}</prop>
+				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+				<prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="lazyConnectionBoneCpDataSource" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+		<property name="targetDataSource" ref="boneCpDataSource" />
+	</bean>
+
+	<bean id="boneCpDataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+		<property name="driverClass" value="${dataSource.driverClass}" />
+		<property name="jdbcUrl" value="${dataSource.jdbcUrl}" />
+		<property name="username" value="${dataSource.username}" />
+		<property name="password" value="${dataSource.password}" />
+		<property name="maxConnectionsPerPartition" value="${dataSource.maxConnectionsPerPartition}" />
+		<property name="minConnectionsPerPartition" value="${dataSource.minConnectionsPerPartition}" />
+		<property name="partitionCount" value="${dataSource.partitionCount}" />
+		<property name="acquireIncrement" value="${dataSource.acquireIncrement}" />
+		<property name="statementsCacheSize" value="${dataSource.statementsCacheSize}" />
+		<property name="disableConnectionTracking" value="true" />
+	</bean>
+</beans>

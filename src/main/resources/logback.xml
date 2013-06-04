@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+
+<configuration>
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<jmxConfigurator />
+
+	<appender name="file" class="ch.qos.logback.core.FileAppender">
+		<file>moviediary.log</file>
+		<encoder>
+			<pattern>%date %level [%thread] %logger: %message%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date %level [%thread] %logger{1}: %message%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.nnc.moviediary" level="ALL" />
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.hibernate" level="INFO" />
+	<logger name="org.apache" level="INFO"/>
+
+	<root level="ALL">
+		<appender-ref ref="console" />
+		<appender-ref ref="file" />
+	</root>
+</configuration>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="baseLayout" template="/WEB-INF/view/fragments/baseLayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/view/fragments/header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/view/fragments/footer.jsp" />
+	</definition>
+
+	<definition name="movies" extends="baseLayout">
+		<put-attribute name="title" value="Movies" />
+		<put-attribute name="body" value="/WEB-INF/view/contents/movies.jsp" />
+	</definition>
+	
+	<definition name="addMovie" extends="baseLayout">
+		<put-attribute name="title" value="AddMovie" />
+		<put-attribute name="body" value="/WEB-INF/view/contents/addMovie.jsp" />
+	</definition>
+</tiles-definitions>
