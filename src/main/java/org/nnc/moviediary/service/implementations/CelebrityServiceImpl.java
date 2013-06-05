@@ -34,4 +34,9 @@ public class CelebrityServiceImpl implements CelebrityService {
 		Celebrity celebrity = new Celebrity(id, visible, name, imdbLink, featuredIn, directedMovies);
 		celebrityDao.saveCelebrity(celebrity);
 	}
+
+	@Override
+	public List<Celebrity> getAllCelebrities() {
+		return celebrityDao.getAllCelebrities();
+	}
 }

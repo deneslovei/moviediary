@@ -12,6 +12,9 @@ public class ServiceUtil {
 	private static final Logger logger = LoggerFactory.getLogger(ServiceUtil.class);
 
 	public static <E extends BaseEntity> List<E> convertIdsToEntitiesToSave(final String[] ids, final Class<E> clazz) {
+		if (ids == null) {
+			return null;
+		}
 		List<E> list = new ArrayList<>(ids.length);
 		for (String itemId : ids) {
 			long id = Long.parseLong(itemId);

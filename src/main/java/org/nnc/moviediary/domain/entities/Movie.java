@@ -42,7 +42,7 @@ public class Movie extends BaseEntity {
 	@ManyToMany
 	private List<Genre> genres;
 
-	@ManyToMany(mappedBy = "movies")
+	@ManyToMany
 	private List<Celebrity> actors;
 
 	@Column(name = "imdb_link")

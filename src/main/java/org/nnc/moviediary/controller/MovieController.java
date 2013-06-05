@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.nnc.moviediary.domain.entities.Movie;
+import org.nnc.moviediary.service.interfaces.CelebrityService;
 import org.nnc.moviediary.service.interfaces.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +22,12 @@ public class MovieController {
 
 	@Autowired
 	private MovieService movieService;
+	@Autowired
+	private CelebrityService celebrityService;
 
 	@RequestMapping(value = "/add-movie", method = RequestMethod.GET)
-	public String addMovie() {
+	public String addMovie(final Model model) {
+		model.addAttribute("celebrities", celebrityService.getAllCelebrities());
 		return "addMovie";
 	}
 
@@ -31,11 +35,11 @@ public class MovieController {
 	public String saveMovie(final Model model, @RequestParam("movieId") final String movieId, @RequestParam("visible") final Boolean visible,
 			@RequestParam("originalTitle") final String originalTitle, @RequestParam("englishTitle") final String englishTitle,
 			@RequestParam("hungarianTitle") final String hungarianTitle, @RequestParam("year") final String year,
-			@RequestParam("runningTime") final String runningTime, @RequestParam("director") final String director,
+			@RequestParam("runningTime") final String runningTime, @RequestParam("directorId") final String directorId,
 			@RequestParam("imdbLink") final String imdbLink, @RequestParam("rating") final String rating, @RequestParam("language") final String language,
 			@RequestParam(value = "genres", required = false) final String[] genres, @RequestParam(value = "actors", required = false) final String[] actors) {
 
-		List<String> errors = movieService.saveMovie(movieId, visible, originalTitle, englishTitle, hungarianTitle, year, runningTime, director, rating,
+		List<String> errors = movieService.saveMovie(movieId, visible, originalTitle, englishTitle, hungarianTitle, year, runningTime, directorId, rating,
 				language, genres, actors, imdbLink);
 		if (errors.isEmpty()) {
 			return "redirect:/movies";
@@ -52,7 +56,7 @@ public class MovieController {
 		return "movies";
 	}
 
-	@RequestMapping(value = MOVIES_HTTP_LOCATION + "**", method = RequestMethod.GET)
+	@RequestMapping(value = MOVIES_HTTP_LOCATION, method = RequestMethod.GET)
 	public String getMovie(final HttpServletRequest request, final ModelMap model) {
 		System.out.println(model.get("movie"));
 		try {

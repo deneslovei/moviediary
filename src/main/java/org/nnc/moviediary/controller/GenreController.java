@@ -3,7 +3,6 @@ package org.nnc.moviediary.controller;
 import java.util.List;
 
 import org.nnc.moviediary.service.interfaces.GenreService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class GenreController {
 
-	@Autowired
+	//@Autowired
 	private GenreService genreService;
 
 	@RequestMapping(value = "/add-genre", method = RequestMethod.GET)

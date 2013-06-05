@@ -21,7 +21,7 @@ public class Celebrity extends BaseEntity {
 	@Column(name = "imdb_link")
 	private String imdbLink;
 
-	@ManyToMany(mappedBy = "actors")
+	@ManyToMany
 	private List<Movie> featuredIn;
 
 	@OneToMany(mappedBy = "director")
@@ -43,4 +43,35 @@ public class Celebrity extends BaseEntity {
 		this.directedMovies = directedMovies;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(final String name) {
+		this.name = name;
+	}
+
+	public String getImdbLink() {
+		return imdbLink;
+	}
+
+	public void setImdbLink(final String imdbLink) {
+		this.imdbLink = imdbLink;
+	}
+
+	public List<Movie> getFeaturedIn() {
+		return featuredIn;
+	}
+
+	public void setFeaturedIn(final List<Movie> featuredIn) {
+		this.featuredIn = featuredIn;
+	}
+
+	public List<Movie> getDirectedMovies() {
+		return directedMovies;
+	}
+
+	public void setDirectedMovies(final List<Movie> directedMovies) {
+		this.directedMovies = directedMovies;
+	}
 }

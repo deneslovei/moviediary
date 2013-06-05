@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -41,22 +39,24 @@ public class BaseEntity implements Serializable {
 		this.id = id;
 	}
 
+	public long getId() {
+		return id;
+	}
+
 	public void setId(final long id) {
 		this.id = id;
 	}
 
-	private void setLastUpdateDate(final Timestamp lastUpdateDate) {
+	public Boolean getVisible() {
+		return visible;
+	}
+
+	public void setVisible(final Boolean visible) {
+		this.visible = visible;
+	}
+
+	public void setLastUpdateDate(final Timestamp lastUpdateDate) {
 		this.lastUpdateDate = lastUpdateDate;
-	}
-
-	@PrePersist
-	protected void beforePersist() {
-		this.setLastUpdateDate(new Timestamp(System.currentTimeMillis()));
-	}
-
-	@PreUpdate
-	protected void beforeUpdate() {
-		this.setLastUpdateDate(new Timestamp(System.currentTimeMillis()));
 	}
 
 	@Override

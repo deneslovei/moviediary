@@ -13,9 +13,20 @@
 		<put-attribute name="title" value="Movies" />
 		<put-attribute name="body" value="/WEB-INF/view/contents/movies.jsp" />
 	</definition>
-	
+
 	<definition name="addMovie" extends="baseLayout">
 		<put-attribute name="title" value="AddMovie" />
 		<put-attribute name="body" value="/WEB-INF/view/contents/addMovie.jsp" />
 	</definition>
+
+	<definition name="celebrities" extends="baseLayout">
+		<put-attribute name="title" value="Celebrities" />
+		<put-attribute name="body" value="/WEB-INF/view/contents/celebrities.jsp" />
+	</definition>
+
+	<definition name="addCelebrity" extends="baseLayout">
+		<put-attribute name="title" value="AddCelebrity" />
+		<put-attribute name="body" value="/WEB-INF/view/contents/addCelebrity.jsp" />
+	</definition>
+
 </tiles-definitions>
