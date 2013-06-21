@@ -10,4 +10,8 @@
 	<bean id="celebrityService" class="org.nnc.moviediary.service.implementations.CelebrityServiceImpl">
 		<constructor-arg name="celebrityDao" ref="celebrityDao" />
 	</bean>
+	
+	<bean id="genreService" class="org.nnc.moviediary.service.implementations.GenreServiceImpl">
+		<constructor-arg name="genreDao" ref="genreDao" />
+	</bean>
 </beans>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE tiles-definitions PUBLIC
-       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
 	<definition name="baseLayout" template="/WEB-INF/view/fragments/baseLayout.jsp">
@@ -12,6 +12,11 @@
 	<definition name="movies" extends="baseLayout">
 		<put-attribute name="title" value="Movies" />
 		<put-attribute name="body" value="/WEB-INF/view/contents/movies.jsp" />
+	</definition>
+	
+	<definition name="movie" extends="baseLayout">
+		<put-attribute name="title" value="Movie" />
+		<put-attribute name="body" value="/WEB-INF/view/contents/movie.jsp" />
 	</definition>
 
 	<definition name="addMovie" extends="baseLayout">
@@ -29,4 +34,13 @@
 		<put-attribute name="body" value="/WEB-INF/view/contents/addCelebrity.jsp" />
 	</definition>
 
+	<definition name="genres" extends="baseLayout">
+		<put-attribute name="title" value="Genres" />
+		<put-attribute name="body" value="/WEB-INF/view/contents/genres.jsp" />
+	</definition>
+
+	<definition name="addGenre" extends="baseLayout">
+		<put-attribute name="title" value="AddGenre" />
+		<put-attribute name="body" value="/WEB-INF/view/contents/addGenre.jsp" />
+	</definition>
 </tiles-definitions>

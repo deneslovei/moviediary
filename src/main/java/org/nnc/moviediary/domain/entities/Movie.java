@@ -67,4 +67,96 @@ public class Movie extends BaseEntity {
 		this.actors = actors;
 		this.imdbLink = imdbLink;
 	}
+
+	public Movie(final long id) {
+		super(id);
+	}
+
+	public String getOriginalTitle() {
+		return originalTitle;
+	}
+
+	public void setOriginalTitle(final String originalTitle) {
+		this.originalTitle = originalTitle;
+	}
+
+	public String getEnglishTitle() {
+		return englishTitle;
+	}
+
+	public void setEnglishTitle(final String englishTitle) {
+		this.englishTitle = englishTitle;
+	}
+
+	public String getHungarianTitle() {
+		return hungarianTitle;
+	}
+
+	public void setHungarianTitle(final String hungarianTitle) {
+		this.hungarianTitle = hungarianTitle;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(final String year) {
+		this.year = year;
+	}
+
+	public Integer getRunningTime() {
+		return runningTime;
+	}
+
+	public void setRunningTime(final Integer runningTime) {
+		this.runningTime = runningTime;
+	}
+
+	public Celebrity getDirector() {
+		return director;
+	}
+
+	public void setDirector(final Celebrity director) {
+		this.director = director;
+	}
+
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(final Integer rating) {
+		this.rating = rating;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(final String language) {
+		this.language = language;
+	}
+
+	public List<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(final List<Genre> genres) {
+		this.genres = genres;
+	}
+
+	public List<Celebrity> getActors() {
+		return actors;
+	}
+
+	public void setActors(final List<Celebrity> actors) {
+		this.actors = actors;
+	}
+
+	public String getImdbLink() {
+		return imdbLink;
+	}
+
+	public void setImdbLink(final String imdbLink) {
+		this.imdbLink = imdbLink;
+	}
 }

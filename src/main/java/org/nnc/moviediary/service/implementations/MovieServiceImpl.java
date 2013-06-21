@@ -38,7 +38,7 @@ public class MovieServiceImpl implements MovieService {
 			Integer runningTimeInt = Integer.parseInt(runningTime);
 			Celebrity director = new Celebrity(Long.parseLong(directorId));
 			Integer ratingInt = Integer.parseInt(rating);
-			List<Genre> genres = getGenresListToSave(genresIds);
+			List<Genre> genres = ServiceUtil.convertIdsToDummyEntitiesToSave(genresIds, Genre.class);
 			List<Celebrity> actors = getActorsListToSave(actorsIds);
 			saveMovie(id, visible, originalTitle, englishTitle, hungarianTitle, year, runningTimeInt, director, ratingInt, language, genres, actors, imdbLink);
 		}
@@ -64,8 +64,6 @@ public class MovieServiceImpl implements MovieService {
 
 	private List<Genre> getGenresListToSave(final String[] genresIds) {
 		List<Genre> genres = new ArrayList<>(genresIds.length);
-		System.out.println(genresIds.length);
-		System.out.println(genresIds[0]);
 		for (String actorId : genresIds) {
 			long id = Long.parseLong(actorId);
 			genres.add(new Genre(id));

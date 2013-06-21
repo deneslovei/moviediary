@@ -10,4 +10,8 @@
 	<bean id="celebrityDao" class="org.nnc.moviediary.dao.implementations.CelebrityDaoImpl">
 		<constructor-arg name="sessionFactory" ref="hibernate4LocalSessionFactory" />
 	</bean>
+	
+	<bean id="genreDao" class="org.nnc.moviediary.dao.implementations.GenreDaoImpl">
+		<constructor-arg name="sessionFactory" ref="hibernate4LocalSessionFactory" />
+	</bean>
 </beans>

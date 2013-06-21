@@ -11,7 +11,7 @@ public class ServiceUtil {
 
 	private static final Logger logger = LoggerFactory.getLogger(ServiceUtil.class);
 
-	public static <E extends BaseEntity> List<E> convertIdsToEntitiesToSave(final String[] ids, final Class<E> clazz) {
+	public static <E extends BaseEntity> List<E> convertIdsToDummyEntitiesToSave(final String[] ids, final Class<E> clazz) {
 		if (ids == null) {
 			return null;
 		}
@@ -33,6 +33,12 @@ public class ServiceUtil {
 			final String[] featuredInIds, final String[] directedMoviesIds) {
 		List<String> errors = new ArrayList<>();
 		// TODO validateCelebrity
+		return errors;
+	}
+
+	public static List<String> validateGenre(final String genreId, final Boolean visible, final String name, final String description, final String[] moviesIds) {
+		List<String> errors = new ArrayList<>();
+		// TODO validateGenre
 		return errors;
 	}
 }

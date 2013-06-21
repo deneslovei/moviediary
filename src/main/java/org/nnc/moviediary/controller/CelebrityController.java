@@ -30,11 +30,11 @@ public class CelebrityController {
 	}
 
 	@RequestMapping(value = "/save-celebrity", method = RequestMethod.POST)
-	public String saveCelebrity(final Model model, @RequestParam("celebrityId") final String celebrityId, @RequestParam(value = "visible", defaultValue = "false") final Boolean visible,
-			@RequestParam("name") final String name, @RequestParam("imdbLink") final String imdbLink,
+	public String saveCelebrity(final Model model, @RequestParam("celebrityId") final String celebrityId, @RequestParam(value = "visible",
+			defaultValue = "false") final Boolean visible, @RequestParam("name") final String name, @RequestParam("imdbLink") final String imdbLink,
 			@RequestParam(value = "featuredInIds", required = false) final String[] featuredInIds,
 			@RequestParam(value = "directedMoviesIds", required = false) final String[] directedMoviesIds) {
-		List<String> errors = celebrityService.saveCelebrity(celebrityId, visible, name, imdbLink, featuredInIds, directedMoviesIds);
+		List<String> errors = celebrityService.saveCelebrity(celebrityId, visible, "áé", imdbLink, featuredInIds, directedMoviesIds);
 		if (errors.isEmpty()) {
 			return "redirect:/celebrities";
 		} else {

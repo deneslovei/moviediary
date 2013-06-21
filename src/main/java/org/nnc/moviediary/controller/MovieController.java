@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.nnc.moviediary.domain.entities.Movie;
 import org.nnc.moviediary.service.interfaces.CelebrityService;
+import org.nnc.moviediary.service.interfaces.GenreService;
 import org.nnc.moviediary.service.interfaces.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,16 +19,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MovieController {
 
-	public static final String MOVIES_HTTP_LOCATION = "/movie/";
-
 	@Autowired
 	private MovieService movieService;
 	@Autowired
 	private CelebrityService celebrityService;
+	@Autowired
+	private GenreService genreService;
 
 	@RequestMapping(value = "/add-movie", method = RequestMethod.GET)
 	public String addMovie(final Model model) {
 		model.addAttribute("celebrities", celebrityService.getAllCelebrities());
+		model.addAttribute("genres", genreService.getAllGenres());
 		return "addMovie";
 	}
 
@@ -50,18 +52,17 @@ public class MovieController {
 	}
 
 	@RequestMapping(value = "/movies", method = RequestMethod.GET)
-	public String getAllMovie(final ModelMap model) {
+	public String getAllMovie(final Model model) {
 		List<Movie> movies = movieService.getAllMovies();
 		model.addAttribute("movies", movies);
 		return "movies";
 	}
 
-	@RequestMapping(value = MOVIES_HTTP_LOCATION, method = RequestMethod.GET)
+	@RequestMapping(value = "/movie/**", method = RequestMethod.GET)
 	public String getMovie(final HttpServletRequest request, final ModelMap model) {
-		System.out.println(model.get("movie"));
 		try {
 			String movieUrl = request.getRequestURI();
-			int start = movieUrl.indexOf(MOVIES_HTTP_LOCATION) + MOVIES_HTTP_LOCATION.length();
+			int start = movieUrl.indexOf("/movie/") + "/movie/".length();
 			int end = movieUrl.indexOf("/", start);
 			String movieIdString = movieUrl.substring(start, end);
 			Long movieId = Long.parseLong(movieIdString);

@@ -8,7 +8,7 @@
 <title>Add Celebrity</title>
 </head>
 <body>
-	<form method="post" action="save-celebrity">
+	<form method="post" action="${pageContext.request.contextPath}/save-celebrity" accept-charset="UTF-8">
 		<input id="celebrityId" name="celebrityId" type="hidden" value="0" />
 		<span>
 			<spring:message code="addCelebrity.name" />

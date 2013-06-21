@@ -19,7 +19,7 @@ public class CelebrityDaoImpl extends Dao implements CelebrityDao {
 		simpleSave(celebrity);
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	@Override
 	public List<Celebrity> getAllCelebrities() {
 		return simpleGetAll(Celebrity.class);

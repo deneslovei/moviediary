@@ -8,7 +8,7 @@
 
 	<groupId>org.nnc.moviediary</groupId>
 	<artifactId>moviediary</artifactId>
-	<version>0.0.2</version>
+	<version>0.1.0</version>
 
 	<name>Movie Diary</name>
 	<url>https://sourceforge.net/p/movie-diary</url>
@@ -19,8 +19,8 @@
 		<sourceEncoding>UTF-8</sourceEncoding>
 		<jdk.version>1.7</jdk.version>
 		<project.build.finalName>moviediary</project.build.finalName>
-		<tomcat7.home>c:\my_staffs\Tomcat\</tomcat7.home>
-		<tomcat7.deploy>${tomcat7.home}\webapps</tomcat7.deploy> <!-- war file goes here -->
+		<tomcat7.home>/home/phamor/Documents/moviediary/environment/apache-tomcat-7.0.41</tomcat7.home>
+		<tomcat7.deploy>${tomcat7.home}/webapps</tomcat7.deploy> <!-- war file goes here -->
 
 		<!-- dependencies -->
 		<bonecp-spring.version>0.8.0-rc1</bonecp-spring.version>
@@ -31,14 +31,16 @@
 		<slf4j.version>1.7.5</slf4j.version> <!-- api, jul-to-slf4j, jcl-over-slf4j -->
 		<spring.version>3.2.3.RELEASE</spring.version> <!-- context, aop, beans, core, expression, webmvc, web, tx, orm, jdbc, test -->
 		<tiles-jsp.version>3.0.1</tiles-jsp.version>
-		
+
 		<!-- provided -->
-		<mysql-connector-java.version>5.1.24</mysql-connector-java.version>
+		<postgresql.version>9.1-901.jdbc4</postgresql.version>
 		<tomcat-servlet-api.version>7.0.39</tomcat-servlet-api.version>
+		<jsp-api.version>6.0.37</jsp-api.version>
 
 		<!-- test -->
 		<junit.version>4.11</junit.version>
 		<spring-test.version>${spring.version}</spring-test.version>
+
 
 		<!-- build.pluginManagement.plugins -->
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
@@ -133,15 +135,21 @@
 
 		<!-- Provided -->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql-connector-java.version}</version>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-servlet-api</artifactId>
 			<version>${tomcat-servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${jsp-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 

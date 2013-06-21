@@ -1,0 +1,30 @@
+.width800 {
+	width: 800px;
+}
+
+.tiles-header {
+	margin: auto;
+	clear: both;
+	height: 100px;
+}
+
+.tiles-body {
+	margin: auto;
+	clear: both;
+	min-height: 400px;
+}
+
+.tiles-footer {
+	margin: auto;
+	clear: both;
+	height: 50px;
+}
+
+.header-links {
+	float: left;
+	padding-right: 10px;
+}
+
+.header-rigth {
+	float: right;
+}

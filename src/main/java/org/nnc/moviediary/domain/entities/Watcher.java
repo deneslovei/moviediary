@@ -14,7 +14,7 @@ public class Watcher extends BaseEntity {
 
 	public static final String TABLE_NAME = BaseProperties.TABLE_PREFIX + "watcher";
 
-	@Column(name = "user", nullable = false, unique = true)
+	@Column(name = "user_", nullable = false, unique = true)
 	private User user;
 
 	@OneToMany(mappedBy = "watcher")

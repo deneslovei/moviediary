@@ -21,8 +21,8 @@ public class CelebrityServiceImpl implements CelebrityService {
 		List<String> errors = ServiceUtil.validateCelebrity(celebrityId, visible, name, imdbLink, featuredInIds, directedMoviesIds);
 		if (errors.isEmpty()) {
 			long id = Long.parseLong(celebrityId);
-			List<Movie> featuredIn = ServiceUtil.convertIdsToEntitiesToSave(featuredInIds, Movie.class);
-			List<Movie> directedMovies = ServiceUtil.convertIdsToEntitiesToSave(directedMoviesIds, Movie.class);
+			List<Movie> featuredIn = ServiceUtil.convertIdsToDummyEntitiesToSave(featuredInIds, Movie.class);
+			List<Movie> directedMovies = ServiceUtil.convertIdsToDummyEntitiesToSave(directedMoviesIds, Movie.class);
 			saveCelebrity(id, visible, name, imdbLink, featuredIn, directedMovies);
 		}
 		return errors;

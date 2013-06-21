@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Movies</title>
+<title>Genres</title>
 </head>
 <body>
-	<c:forEach var="movie" items="${movies}">
-		<a href="${pageContext.request.contextPath}/movie/${movie.getId()}/">${movie.getOriginalTitle()} (${movie.getYear()})</a>
+	<c:forEach var="genre" items="${genres}">
+		<a href="${pageContext.request.contextPath}/edit-genre/?genreId=${genre.id}">${genre.name}</a>
+		<br>
 	</c:forEach>
 </body>
 </html>
