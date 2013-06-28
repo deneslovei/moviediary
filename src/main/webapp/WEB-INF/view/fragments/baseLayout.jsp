@@ -6,6 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="${pageContext.request.contextPath}/scripts/main.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/start/jquery-ui.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/<spring:theme code="css"/>" type="text/css" />
 <title>

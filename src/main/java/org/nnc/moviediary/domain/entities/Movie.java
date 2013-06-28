@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -30,7 +31,7 @@ public class Movie extends BaseEntity {
 	@Column(name = "running_time", nullable = false)
 	private Integer runningTime;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Celebrity director;
 
 	@Column(name = "rating")
@@ -39,10 +40,10 @@ public class Movie extends BaseEntity {
 	@Column(name = "language", nullable = false)
 	private String language;
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "movies")
 	private List<Genre> genres;
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "featuredIn")
 	private List<Celebrity> actors;
 
 	@Column(name = "imdb_link")

@@ -10,4 +10,6 @@ public interface MovieDao {
 	public Movie getMovie(long id);
 
 	public void saveMovie(Movie movie);
+
+	public List<Movie> getMoviesByTitleStart(String prefix);
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import org.nnc.moviediary.util.BaseProperties;
@@ -22,6 +23,7 @@ public class Genre extends BaseEntity {
 	private String description;
 
 	@ManyToMany
+	@JoinTable(name = BaseProperties.JOIN_TABLE_PREFIX + Genre.TABLE_NAME + "_" + Movie.TABLE_NAME)
 	private List<Movie> movies;
 
 	public Genre() {

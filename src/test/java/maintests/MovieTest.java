@@ -14,9 +14,6 @@ public class MovieTest {
 	@Autowired
 	private MovieService movieService;
 
-	
-	
-	
 	@Test
 	public void listMovies() {
 

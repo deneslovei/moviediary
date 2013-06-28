@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 						http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
@@ -19,13 +18,14 @@
 		<sourceEncoding>UTF-8</sourceEncoding>
 		<jdk.version>1.7</jdk.version>
 		<project.build.finalName>moviediary</project.build.finalName>
-		<tomcat7.home>/home/phamor/Documents/moviediary/environment/apache-tomcat-7.0.41</tomcat7.home>
+		<tomcat7.home>e:/my_staffs/programing/moviediary/environment/tomcat7</tomcat7.home>
 		<tomcat7.deploy>${tomcat7.home}/webapps</tomcat7.deploy> <!-- war file goes here -->
 
 		<!-- dependencies -->
 		<bonecp-spring.version>0.8.0-rc1</bonecp-spring.version>
 		<commons-lang3.version>3.1</commons-lang3.version>
 		<hibernate.version>4.2.1.Final</hibernate.version> <!-- entitymanager, core -->
+		<jackson-mapper-asl.version>1.9.12</jackson-mapper-asl.version>
 		<jstl.version>1.2</jstl.version>
 		<logback.version>1.0.13</logback.version> <!-- classic, core, access -->
 		<slf4j.version>1.7.5</slf4j.version> <!-- api, jul-to-slf4j, jcl-over-slf4j -->
@@ -33,8 +33,8 @@
 		<tiles-jsp.version>3.0.1</tiles-jsp.version>
 
 		<!-- provided -->
-		<postgresql.version>9.1-901.jdbc4</postgresql.version>
-		<tomcat-servlet-api.version>7.0.39</tomcat-servlet-api.version>
+		<mysql-connector-java.version>5.1.25</mysql-connector-java.version>
+		<tomcat-servlet-api.version>7.0.41</tomcat-servlet-api.version>
 		<jsp-api.version>6.0.37</jsp-api.version>
 
 		<!-- test -->
@@ -132,12 +132,17 @@
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson-mapper-asl.version}</version>
+		</dependency>
 
 		<!-- Provided -->
 		<dependency>
-			<groupId>postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>${postgresql.version}</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-java.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>

@@ -34,7 +34,7 @@ public class CelebrityController {
 			defaultValue = "false") final Boolean visible, @RequestParam("name") final String name, @RequestParam("imdbLink") final String imdbLink,
 			@RequestParam(value = "featuredInIds", required = false) final String[] featuredInIds,
 			@RequestParam(value = "directedMoviesIds", required = false) final String[] directedMoviesIds) {
-		List<String> errors = celebrityService.saveCelebrity(celebrityId, visible, "áé", imdbLink, featuredInIds, directedMoviesIds);
+		List<String> errors = celebrityService.saveCelebrity(celebrityId, visible, name, imdbLink, featuredInIds, directedMoviesIds);
 		if (errors.isEmpty()) {
 			return "redirect:/celebrities";
 		} else {

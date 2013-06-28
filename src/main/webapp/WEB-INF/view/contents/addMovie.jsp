@@ -15,29 +15,29 @@
 		<span>
 			<spring:message code="addMovie.originalTitle" />
 			<strong>*</strong>
-			<input id="originalTitle" name="originalTitle" type="text" />
+			<input id="originalTitle" name="originalTitle"  />
 		</span>
 		<br>
 		<span>
 			<spring:message code="addMovie.englishTitle" />
-			<input id="englishTitle" name="englishTitle" type="text" />
+			<input id="englishTitle" name="englishTitle"  />
 		</span>
 		<br>
 		<span>
 			<spring:message code="addMovie.hungarianTitle" />
-			<input id="hungarianTitle" name="hungarianTitle" type="text" />
+			<input id="hungarianTitle" name="hungarianTitle"  />
 		</span>
 		<br>
 		<span>
 			<spring:message code="addMovie.year" />
 			<strong>*</strong>
-			<input id="year" name="year" type="text" />
+			<input id="year" name="year"  />
 		</span>
 		<br>
 		<span>
 			<spring:message code="addMovie.runningTime" />
 			<strong>*</strong>
-			<input id="runningTime" name="runningTime" type="text" />
+			<input id="runningTime" name="runningTime"  />
 		</span>
 		<br>
 		<span>
@@ -52,18 +52,18 @@
 		<br>
 		<span>
 			<spring:message code="addMovie.rating" />
-			<input id="rating" name="rating" type="text" />
+			<input id="rating" name="rating"  />
 		</span>
 		<br>
 		<span>
 			<spring:message code="addMovie.language" />
 			<strong>*</strong>
-			<input id="language" name="language" type="text" />
+			<input id="language" name="language"  />
 		</span>
 		<br>
 		<span>
 			<spring:message code="addMovie.imdbLink" />
-			<input id="imdbLink" name="imdbLink" type="text" />
+			<input id="imdbLink" name="imdbLink"  />
 		</span>
 		<br>
 		<span>
@@ -73,12 +73,18 @@
 					<option value="${genre.id}">${genre.name}</option>
 				</c:forEach>
 			</select>
+			<select id="idsOfGenres" name="idsOfGenres" multiple>
+				<c:forEach var="genre" items="${movie.genres}">
+					<option value="${genre.id}">${genre.name}</option>
+				</c:forEach>
+			</select>
 		</span>
 		<br>
 		<span>
 			<spring:message code="addMovie.actors" />
+			<input id="actors" />
 			<select id="actors" name="actors" multiple size="10">
-				<c:forEach var="actor" items="${celebrities}">
+				<c:forEach var="actor" items="${movie.featuredIn}">
 					<option value="${actor.id}">${actor.name}</option>
 				</c:forEach>
 			</select>
@@ -93,4 +99,10 @@
 		<input type="submit" value="<spring:message code="save"/>" />
 	</form>
 </body>
+<script>
+$('#genres').change(function() {
+	$("#idsOfGenres").append($("<option></option>").text($(this).text()).val($(this).val()));
+});
+</script>
+
 </html>

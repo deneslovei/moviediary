@@ -62,15 +62,6 @@ public class MovieServiceImpl implements MovieService {
 		movieDao.saveMovie(movie);
 	}
 
-	private List<Genre> getGenresListToSave(final String[] genresIds) {
-		List<Genre> genres = new ArrayList<>(genresIds.length);
-		for (String actorId : genresIds) {
-			long id = Long.parseLong(actorId);
-			genres.add(new Genre(id));
-		}
-		return genres;
-	}
-
 	private List<Celebrity> getActorsListToSave(final String[] actorsIds) {
 		List<Celebrity> actors = new ArrayList<>(actorsIds.length);
 		for (String actorId : actorsIds) {
@@ -78,5 +69,10 @@ public class MovieServiceImpl implements MovieService {
 			actors.add(new Celebrity(id));
 		}
 		return actors;
+	}
+
+	@Override
+	public List<Movie> getMoviesByTitlePiece(final String prefix) {
+		return movieDao.getMoviesByTitleStart(prefix);
 	}
 }

@@ -4,8 +4,9 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import org.nnc.moviediary.util.BaseProperties;
 
@@ -28,7 +29,8 @@ public class WatchList extends BaseEntity {
 	@ManyToOne
 	private Watcher watcher;
 
-	@OneToMany
+	@ManyToMany
+	@JoinTable(name = BaseProperties.JOIN_TABLE_PREFIX + WatchList.TABLE_NAME + "_" + Movie.TABLE_NAME)
 	private List<Movie> movies;
 
 	WatchList() {

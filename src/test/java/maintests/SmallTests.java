@@ -1,20 +1,23 @@
 package maintests;
 
-import java.util.List;
-
 import org.junit.Test;
-import org.nnc.moviediary.domain.entities.Movie;
-import org.nnc.moviediary.service.implementations.ServiceUtil;
+import org.junit.runner.RunWith;
+import org.nnc.moviediary.service.interfaces.GenreService;
+import org.nnc.moviediary.service.interfaces.MovieService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/main/resources/META-INF/spring/applicationContext-bootstrap.xml")
 public class SmallTests {
 
+	@Autowired
+	private GenreService genreService;
+	@Autowired
+	private MovieService movieService;
+	
 	@Test
-	public void listMovies() {
-		String[] ids = new String[5];
-		for (int i = 0; i < 5; ++i) {
-			ids[i] = i + "";
-		}
-		List<Movie> movies = ServiceUtil.convertIdsToEntitiesToSave(ids, Movie.class);
-		System.out.println(movies.size());
+	public void test() {
 	}
 }

@@ -17,4 +17,6 @@ public interface MovieService {
 
 	void saveMovie(long id, Boolean visible, String originalTitle, String englishTitle, String hungarianTitle, String year, Integer runningTime,
 			Celebrity director, Integer rating, String language, List<Genre> genres, List<Celebrity> actors, String imdbLink);
+
+	List<Movie> getMoviesByTitlePiece(String prefix);
 }

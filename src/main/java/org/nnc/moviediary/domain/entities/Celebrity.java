@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -22,6 +23,7 @@ public class Celebrity extends BaseEntity {
 	private String imdbLink;
 
 	@ManyToMany
+	@JoinTable(name = BaseProperties.JOIN_TABLE_PREFIX + Celebrity.TABLE_NAME + "_" + Movie.TABLE_NAME)
 	private List<Movie> featuredIn;
 
 	@OneToMany(mappedBy = "director")
