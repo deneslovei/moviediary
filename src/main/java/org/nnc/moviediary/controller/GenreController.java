@@ -48,7 +48,6 @@ public class GenreController {
 	public String saveGenre(final Model model, @RequestParam(value = "visible", defaultValue = "false") final Boolean visible,
 			@RequestParam("name") final String name, @RequestParam("description") final String description,
 			@RequestParam(value = "moviesIds", required = false) final String[] moviesIds) {
-		System.out.println(moviesIds.length);
 		List<String> errors = genreService.saveGenre(visible, name, description, moviesIds);
 		if (errors.isEmpty()) {
 			return "redirect:genres";

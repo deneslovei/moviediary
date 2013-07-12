@@ -9,7 +9,7 @@ import org.nnc.moviediary.util.BaseProperties;
 public class User extends BaseEntity {
 	private static final long serialVersionUID = 8364239647574512618L;
 
-	public static final String TABLE_NAME = BaseProperties.TABLE_PREFIX + "user";
+	public static final String TABLE_NAME = BaseProperties.TABLE_PREFIX + "user_";
 
 	@Column(name = "login_name", nullable = false, unique = true)
 	private String loginName;

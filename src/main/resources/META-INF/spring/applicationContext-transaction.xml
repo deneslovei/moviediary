@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/tx
@@ -17,7 +16,7 @@
 	</bean>
 
 	<bean id="hibernate4LocalSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="lazyConnectionBoneCpDataSource" />
+		<property name="dataSource" ref="lazyConnectionDataSourceProxy" />
 		<property name="annotatedClasses">
 			<set>
 				<value>org.nnc.moviediary.domain.entities.BaseEntity</value>
@@ -50,20 +49,13 @@
 		</property>
 	</bean>
 
-	<bean id="lazyConnectionBoneCpDataSource" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+	<bean id="lazyConnectionDataSourceProxy" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
 		<property name="targetDataSource" ref="boneCpDataSource" />
 	</bean>
 
-	<bean id="boneCpDataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
-		<property name="driverClass" value="${dataSource.driverClass}" />
-		<property name="jdbcUrl" value="${dataSource.jdbcUrl}" />
-		<property name="username" value="${dataSource.username}" />
-		<property name="password" value="${dataSource.password}" />
-		<property name="maxConnectionsPerPartition" value="${dataSource.maxConnectionsPerPartition}" />
-		<property name="minConnectionsPerPartition" value="${dataSource.minConnectionsPerPartition}" />
-		<property name="partitionCount" value="${dataSource.partitionCount}" />
-		<property name="acquireIncrement" value="${dataSource.acquireIncrement}" />
-		<property name="statementsCacheSize" value="${dataSource.statementsCacheSize}" />
-		<property name="disableConnectionTracking" value="true" />
+	<bean id="boneCpDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="${datasource.jndiName}" />
+		<property name="lookupOnStartup" value="${datasource.lookupOnStartup}" />
+		<property name="resourceRef" value="${datasource.resourceRef}" />
 	</bean>
 </beans>

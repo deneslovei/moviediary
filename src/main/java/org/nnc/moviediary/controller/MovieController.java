@@ -8,6 +8,8 @@ import org.nnc.moviediary.domain.entities.Movie;
 import org.nnc.moviediary.service.interfaces.CelebrityService;
 import org.nnc.moviediary.service.interfaces.GenreService;
 import org.nnc.moviediary.service.interfaces.MovieService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MovieController {
+
+	private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
 
 	@Autowired
 	private MovieService movieService;
@@ -34,12 +38,13 @@ public class MovieController {
 	}
 
 	@RequestMapping(value = "/save-movie", method = RequestMethod.POST)
-	public String saveMovie(final Model model, @RequestParam("movieId") final String movieId, @RequestParam(value = "visible", defaultValue = "false") final Boolean visible,
-			@RequestParam("originalTitle") final String originalTitle, @RequestParam("englishTitle") final String englishTitle,
-			@RequestParam("hungarianTitle") final String hungarianTitle, @RequestParam("year") final String year,
-			@RequestParam("runningTime") final String runningTime, @RequestParam("directorId") final String directorId,
-			@RequestParam("imdbLink") final String imdbLink, @RequestParam("rating") final String rating, @RequestParam("language") final String language,
-			@RequestParam(value = "genres", required = false) final String[] genres, @RequestParam(value = "actors", required = false) final String[] actors) {
+	public String saveMovie(final Model model, @RequestParam("movieId") final String movieId,
+			@RequestParam(value = "visible", defaultValue = "false") final Boolean visible, @RequestParam("originalTitle") final String originalTitle,
+			@RequestParam("englishTitle") final String englishTitle, @RequestParam("hungarianTitle") final String hungarianTitle,
+			@RequestParam("year") final String year, @RequestParam("runningTime") final String runningTime,
+			@RequestParam("directorId") final String directorId, @RequestParam("imdbLink") final String imdbLink, @RequestParam("rating") final String rating,
+			@RequestParam("language") final String language, @RequestParam(value = "genres", required = false) final String[] genres,
+			@RequestParam(value = "actors", required = false) final String[] actors) {
 		List<String> errors = movieService.saveMovie(movieId, visible, originalTitle, englishTitle, hungarianTitle, year, runningTime, directorId, rating,
 				language, genres, actors, imdbLink);
 		if (errors.isEmpty()) {
@@ -54,7 +59,7 @@ public class MovieController {
 	public String index(final Model model) {
 		return getAllMovie(model);
 	}
-	
+
 	@RequestMapping(value = "/movies", method = RequestMethod.GET)
 	public String getAllMovie(final Model model) {
 		List<Movie> movies = movieService.getAllMovies();
